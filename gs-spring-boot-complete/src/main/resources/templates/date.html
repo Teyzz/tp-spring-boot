@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<meta charset="ISO-8859-1">
+	<head><title>${appName}</title></head>
+	<body>
+		<h1>Yo</h1>
+		<p>Nous sommes le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy HH:mm')}">date du jour</span></p>
+		<a href="home">Home</a>
+	</body>
+</html>
