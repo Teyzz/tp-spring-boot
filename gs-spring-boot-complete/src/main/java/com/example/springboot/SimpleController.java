@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SimpleController implements ErrorController {
-	//@Value("${spring.application.name}")
+	@Value("${spring.application.name}")
+	
 	String appName;
 	private static final String PATH = "/error";
 	
@@ -27,10 +28,10 @@ public class SimpleController implements ErrorController {
 	@GetMapping("/date") // à créer pour chaque page: ici pour le "date"
 	public String datePage(Model model) {
 		model.addAttribute("TPs", appName);
-		//model.addAttribute("standardDate", new Date());
-		//model.addAttribute("localDateTime", LocalDateTime.now());
-		//model.addAttribute("localDate", LocalDate.now());
-		//model.addAttribute("timestamp", Instant.now());
+		model.addAttribute("standardDate", new Date());
+		model.addAttribute("localDateTime", LocalDateTime.now());
+		model.addAttribute("localDate", LocalDate.now());
+		model.addAttribute("timestamp", Instant.now());
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		return "date";
 	}

@@ -4,7 +4,7 @@
 	<head><title>${appName}</title></head>
 	<body>
 		<h1>Yo</h1>
-		<p>Nous sommes le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy HH:mm')}">date du jour</span></p>
+		<p>Nous sommes le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy')}"></span> et il est <span th:text="${#temporals.format(localDateTime,'HH:mm')}"></span></p>
 		<a href="home">Home</a>
 	</body>
 </html>
