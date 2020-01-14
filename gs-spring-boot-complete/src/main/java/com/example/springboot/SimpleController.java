@@ -21,13 +21,13 @@ public class SimpleController implements ErrorController {
 	
 	@GetMapping("/home") //pour le home
 	public String homePage(Model model) {
-		model.addAttribute("TPs", appName);
+		model.addAttribute("appName", appName);
 		return "home";
 	}
 	
 	@GetMapping("/date") // à créer pour chaque page: ici pour le "date"
 	public String datePage(Model model) {
-		model.addAttribute("TPs", appName);
+		model.addAttribute("appName", appName);
 		model.addAttribute("standardDate", new Date());
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		model.addAttribute("localDate", LocalDate.now());

@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
 <meta charset="ISO-8859-1">
-	<head><title>${appName}</title></head>
+	<head><title>TP SPRING BOOT</title></head>
 	<body>
 		<h1>Yo</h1>
-		<p>Nous sommes le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy')}"></span> et il est <span th:text="${#temporals.format(localDateTime,'HH:mm')}"></span></p>
+		<p>Nous sommes <span th:text="${#temporals.dayOfWeekName(localDateTime)}"></span> le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy')}"></span> et il est <span th:text="${#temporals.format(localDateTime,'HH:mm')}"></span></p>
 		<a href="home">Home</a>
+		<!--  <span th:if="${#temporals.dayOfWeek(localDateTime) == 2}">Au boulot!</span>-->
+		
+		<table>
+			<tr style="background-color: red;">
+				<td th:if="${#temporals.dayOfWeek(localDateTime) < 6}">Au boulot !</td>
+				<td th:if="${#temporals.dayOfWeek(localDateTime) >= 6}">Week-end !</td>
+			</tr>
+			<tr style="background-color: blue;">
+				<td th:switch="${#temporals.dayOfWeek(localDateTime)}">
+					<span th:case="'1'">Au boulot !</span>
+					<span th:case="'2'">Au boulot !</span>
+					<span th:case="'3'">Au boulot !</span>
+					<span th:case="'4'">Au boulot !</span>
+					<span th:case="'5'">Au boulot !</span>
+					<span th:case="'6'">Week-end!</span>
+					<span th:case="'7'">Week-end!</span>
+				</td>
+				<!--  <td th:switch="${#temporals.dayOfWeek(localDateTime)}">
+					<span th:case="'0'">NO COURSES YET!</span>
+					<span th:case="'1'" th:text="${teacher.courses[0]}"></span>
+					<div th:case="*">
+						<div th:each="course:${teacher.courses}" th:text="${course}"/>
+					</div>
+				</td>-->
+			</tr>
+		</table>
 	</body>
 </html>
