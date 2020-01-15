@@ -5,13 +5,14 @@
 	<body>
 		<h1>Yo</h1>
 		<p>Nous sommes <span th:text="${#temporals.dayOfWeekName(localDateTime)}"></span> le <span th:text="${#temporals.format(localDateTime,'dd-MM-yyyy')}"></span> et il est <span th:text="${#temporals.format(localDateTime,'HH:mm')}"></span></p>
-		<a href="home">Home</a>
+		<a href="/">Home</a>
 		<!--  <span th:if="${#temporals.dayOfWeek(localDateTime) == 2}">Au boulot!</span>-->
 		
 		<table>
 			<tr style="background-color: red;">
 				<td th:if="${#temporals.dayOfWeek(localDateTime) < 6}">Au boulot !</td>
 				<td th:if="${#temporals.dayOfWeek(localDateTime) >= 6}">Week-end !</td>
+				<!--<td th:if="${#temporals.dayOfWeekName(localDateTime) == 'mardi'}">test !</td>-->
 			</tr>
 			<tr style="background-color: blue;">
 				<td th:switch="${#temporals.dayOfWeek(localDateTime)}">
@@ -23,14 +24,29 @@
 					<span th:case="'6'">Week-end!</span>
 					<span th:case="'7'">Week-end!</span>
 				</td>
-				<!--  <td th:switch="${#temporals.dayOfWeek(localDateTime)}">
+			</tr>
+			
+			<!--<tr>
+				<td th:switch="${#lists.size(teacher.courses)}">
 					<span th:case="'0'">NO COURSES YET!</span>
 					<span th:case="'1'" th:text="${teacher.courses[0]}"></span>
 					<div th:case="*">
 						<div th:each="course:${teacher.courses}" th:text="${course}"/>
 					</div>
-				</td>-->
-			</tr>
+				</td>
+			</tr>-->
 		</table>
+		
+		<!--<div th:switch="${#temporals.month(localDateTime)}">
+			<span th:case="${#temporals.month(localDateTime) <4}">PRINTEMPS<img src="../images/printemps.jpg"/></span>
+		</div>-->
+		
+		<div id="saison" th:switch="${#temporals.month(localDateTime)}">
+			<div th:case="*">
+			<!-- <p>yo</p> -->
+				<div th:each="mois:${#temporals.month(localDateTime)}" th:text="${mois}"/>
+				<img src="../images/hiver.jpg"/>
+			</div>
+		</div>
 	</body>
 </html>

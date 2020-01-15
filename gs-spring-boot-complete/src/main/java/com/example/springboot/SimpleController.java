@@ -19,7 +19,12 @@ public class SimpleController implements ErrorController {
 	String appName;
 	private static final String PATH = "/error";
 	
-	@GetMapping("/home") //pour le home
+	//@RequestMapping("/")
+	//public String index() {
+	//	return "Greetings from Spring Boot!";
+	//}
+	
+	@GetMapping("/") //pour le home
 	public String homePage(Model model) {
 		model.addAttribute("appName", appName);
 		return "home";
@@ -29,7 +34,6 @@ public class SimpleController implements ErrorController {
 	public String datePage(Model model) {
 		model.addAttribute("appName", appName);
 		model.addAttribute("standardDate", new Date());
-		model.addAttribute("localDateTime", LocalDateTime.now());
 		model.addAttribute("localDate", LocalDate.now());
 		model.addAttribute("timestamp", Instant.now());
 		model.addAttribute("localDateTime", LocalDateTime.now());
